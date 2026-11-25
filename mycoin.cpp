@@ -1,4 +1,5 @@
 #include "mycoin.h"
+#include <QDebug>
 #include <QPixmap>
 #include <QTimer>
 

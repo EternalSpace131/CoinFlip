@@ -4,13 +4,13 @@
 
 ## 运行
 
-原工程使用 Windows、Qt 6.9.0 和 MinGW 64 位。用 Qt 安装器准备好对应的桌面开发套件（Kit）、MinGW 编译器及 **Qt Multimedia** 模块后：
+Windows 下已用 Qt 6.9.0 和 MinGW 13.1（64 位）完成 Release 构建。安装对应的 Qt 桌面开发套件（Kit）、MinGW 编译器及 **Qt Multimedia** 模块后，按以下步骤启动游戏。
 
 1. 在 Qt Creator 中打开仓库根目录的 `CoinFlip.pro`。
 2. 选择匹配的 MinGW 64 位 Kit，指定一个新的构建目录，例如 `build-local`。
 3. 按 `Ctrl+R` 编译并运行。在主菜单点击开始，再选择关卡编号。
 
-也可以在已配置该 Kit 的 Windows 命令提示符中，从仓库根目录执行：
+在已配置该 Kit 的 Windows 命令提示符中，也可以从仓库根目录直接构建。
 
 ```bat
 mkdir build-local
@@ -22,7 +22,20 @@ release\CoinFlip.exe
 
 命令行运行时，当前环境需要能找到同一套 Qt 的 `qmake`、Qt 运行库及 MinGW 的 `mingw32-make`。若 qmake 提示 `Unknown module(s) in QT: multimedia`，请为当前 Qt 版本和编译器补装 Qt Multimedia。
 
+Ubuntu 24.04 下也已使用 Qt 5.15.13 编译并启动。安装依赖后，从仓库根目录执行下列命令，最后一步需要图形桌面。
+
+```sh
+sudo apt install build-essential qtbase5-dev qtmultimedia5-dev
+mkdir -p build-local
+cd build-local
+qmake ../CoinFlip.pro
+make -j4
+./CoinFlip
+```
+
 ## 试玩第一关
+
+![第一关的 4 × 4 棋盘，五枚银币围成十字](docs/level-1.png)
 
 从左上角开始计数，第一关的银币正好组成一个十字。点击**第 3 行、第 3 列**，中心和四枚相邻硬币会依次翻面，随后出现通关提示。右下角的返回按钮可回到选关界面。
 
