@@ -1,0 +1,9 @@
+# qmake shadow builds
+/build*/
+/debug/
+/release/
+/Makefile*
+/.qmake.stash
+
+# Qt Creator's per-user kit and session settings
+*.pro.user*
